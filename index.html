@@ -2,398 +2,181 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>VIP Flight Club | Snack Pack Flightz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snack Pack Flightz | Pay</title>
   <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
+    :root{
+      --bg:#050509;
+      --panel:#111119;
+      --text:#fff;
+      --muted:#aaaabd;
+      --green:#39ff14;
+      --purple:#9b5cff;
+      --pink:#ff3dbb;
+      --blue:#28c7ff;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    *{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,Helvetica,sans-serif;
       background:
-        radial-gradient(circle at 50% -10%, rgba(0, 229, 255, .30), transparent 34%),
-        radial-gradient(circle at 80% 12%, rgba(255, 216, 107, .16), transparent 24%),
-        linear-gradient(180deg, #07111f 0%, #090b14 48%, #05070d 100%);
-      color: #ffffff;
-      min-height: 100vh;
-      padding: 14px 12px 190px;
+        radial-gradient(circle at top, rgba(40,199,255,.16), transparent 35%),
+        #050509;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 16px;
     }
 
-    .wrap {
-      max-width: 540px;
-      margin: 0 auto;
+    .wrap{
+      width:100%;
+      max-width:620px;
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      padding: 28px 16px 22px;
-      border: 1px solid rgba(110, 231, 255, .38);
-      border-radius: 28px;
-      background: rgba(10, 20, 38, .82);
-      box-shadow:
-        0 0 34px rgba(0, 229, 255, .18),
-        inset 0 0 22px rgba(255,255,255,.035);
-      backdrop-filter: blur(12px);
+    .brand{
+      text-align:center;
+      margin-bottom:18px;
     }
 
-    .hero:after {
-      content: "";
-      position: absolute;
-      inset: -80px -80px auto auto;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      background: rgba(255, 216, 107, .12);
-      filter: blur(8px);
+    .brand h1{
+      margin:0;
+      font-size:34px;
+      text-transform:uppercase;
+      letter-spacing:-1px;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 13px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: #07111f;
-      background: linear-gradient(90deg, #6ee7ff, #ffd86b);
-      margin-bottom: 13px;
-      text-transform: uppercase;
+    .brand p{
+      margin:7px 0 0;
+      color:var(--green);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
     }
 
-    h1 {
-      font-size: clamp(34px, 10vw, 52px);
-      line-height: .94;
-      margin: 0 0 12px;
-      letter-spacing: -1.3px;
+    .pay{
+      display:block;
+      text-decoration:none;
+      color:white;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.12);
+      position:relative;
+      transition:.18s ease;
     }
 
-    .sub {
-      color: #d8f7ff;
-      font-size: 16px;
-      margin: 0 auto;
-      max-width: 450px;
-      line-height: 1.45;
+    .pay:hover{
+      transform:translateY(-2px);
     }
 
-    .highlight {
-      color: #ffd86b;
-      font-weight: 950;
-      white-space: nowrap;
-    }
-
-    .section-title {
-      margin: 26px 4px 12px;
-      font-size: 17px;
-      color: #6ee7ff;
-      text-transform: uppercase;
-      letter-spacing: .10em;
-      font-weight: 950;
-    }
-
-    .card {
-      border-radius: 22px;
-      padding: 17px;
-      margin: 12px 0;
-      background: rgba(16, 28, 52, .93);
-      border: 1px solid rgba(255,255,255,.105);
-      box-shadow: 0 12px 30px rgba(0,0,0,.30);
-    }
-
-    .ready {
-      border-color: rgba(110, 231, 255, .25);
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -.3px;
-    }
-
-    .card p {
-      color: #d7e9f0;
-      margin: 8px 0 0;
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    ul {
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    li {
-      background: rgba(255,255,255,.062);
-      border: 1px solid rgba(255,255,255,.085);
-      padding: 12px 12px;
-      border-radius: 15px;
-      margin: 8px 0;
-      font-size: 15px;
-      line-height: 1.35;
-    }
-
-    .warning {
-      text-align: center;
-      border: 1px solid rgba(255, 216, 107, .48);
+    .square{
+      padding:34px 26px;
+      min-height:230px;
       background:
-        linear-gradient(180deg, rgba(255, 216, 107, .14), rgba(255, 216, 107, .07));
-      color: #fff3c4;
-      font-weight: 950;
-      font-size: 16px;
+        linear-gradient(135deg, rgba(40,199,255,.24), rgba(57,255,20,.08)),
+        var(--panel);
+      box-shadow:0 24px 70px rgba(0,0,0,.45);
     }
 
-    .tier {
-      position: relative;
-      overflow: hidden;
-      padding-top: 19px;
-    }
-
-    .tier:before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #6ee7ff, #ffd86b);
-    }
-
-    .tier-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .tier-name {
-      font-size: 19px;
-      font-weight: 950;
-      letter-spacing: -.2px;
-    }
-
-    .points {
-      flex: 0 0 auto;
-      font-size: 13px;
-      font-weight: 950;
-      color: #07111f;
-      background: #ffd86b;
-      padding: 7px 9px;
-      border-radius: 999px;
-      box-shadow: 0 0 20px rgba(255, 216, 107, .18);
-    }
-
-    .perk-list {
-      display: grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .perk {
-      border-radius: 14px;
-      padding: 10px 11px;
-      background: rgba(255,255,255,.055);
-      color: #dff6ff;
-      font-size: 14px;
-      border: 1px solid rgba(255,255,255,.075);
-    }
-
-    .mystery {
-      text-align: center;
-      border-color: rgba(110, 231, 255, .24);
+    .stripe{
+      padding:20px 22px;
+      margin-top:14px;
       background:
-        radial-gradient(circle at top, rgba(110,231,255,.13), transparent 40%),
-        rgba(16, 28, 52, .93);
+        linear-gradient(135deg, rgba(155,92,255,.16), rgba(255,61,187,.07)),
+        var(--panel);
     }
 
-    .mystery h2 {
-      color: #ffd86b;
+    .preferred{
+      display:inline-block;
+      background:var(--green);
+      color:#050509;
+      font-size:11px;
+      font-weight:900;
+      padding:7px 10px;
+      border-radius:999px;
+      margin-bottom:18px;
+      text-transform:uppercase;
+      letter-spacing:.8px;
     }
 
-    .fomo {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 900;
-      color: #ffffff;
+    .square strong{
+      display:block;
+      font-size:32px;
+      margin-bottom:12px;
     }
 
-    .small {
-      color: #9fb7c1;
-      font-size: 13px;
-      text-align: center;
-      margin-top: 10px;
-      line-height: 1.4;
+    .stripe strong{
+      display:block;
+      font-size:20px;
     }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(110,231,255,.42), transparent);
-      margin: 22px 8px;
+    .methods{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:18px;
     }
 
-    .bottom-spacer {
-      height: 92px;
+    .pill{
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .sticky {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
-      background: linear-gradient(180deg, rgba(5,7,13,0), #05070d 24%);
-      z-index: 20;
+    .arrow{
+      position:absolute;
+      right:22px;
+      top:22px;
+      font-size:28px;
     }
 
-    .sticky-inner {
-      max-width: 540px;
-      margin: 0 auto;
-      display: grid;
-      gap: 8px;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      color: #06111e;
-      background: linear-gradient(90deg, #6ee7ff, #ffd86b);
-      font-weight: 950;
-      font-size: 16px;
-      padding: 15px 14px;
-      border-radius: 17px;
-      box-shadow: 0 10px 28px rgba(0, 229, 255, .23);
-    }
-
-    .btn.secondary {
-      color: #ffffff;
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: none;
-    }
-
-    @media (max-width: 390px) {
-      body {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .tier-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .points {
-        align-self: flex-start;
-      }
-
-      .card {
-        padding: 15px;
-      }
+    .footer{
+      text-align:center;
+      margin-top:16px;
+      font-size:11px;
+      color:#777789;
     }
   </style>
 </head>
-
-<body id="top">
+<body>
   <main class="wrap">
-    <section class="hero">
-      <div class="badge">Invite-Only Loyalty Clubs</div>
-      <h1>You’ve Earned Your Seat. ✈️</h1>
-      <p class="sub">
-        Exclusive access for our most loyal customers. Rewards, early access, giveaways, and higher status every time you keep earning.
-      </p>
-    </section>
-
-    <h2 class="section-title">Ready To Board?</h2>
-    <section class="card ready">
-      <h2>Before requesting access:</h2>
-      <ul>
-        <li>✅ Have <span class="highlight">1,000+ logged loyalty points</span>.</li>
-        <li>📸 Screenshot your rewards dashboard.</li>
-        <li>📲 Send the screenshot to us on Signal.</li>
-        <li>✈️ We verify your account and send the correct invite.</li>
-      </ul>
-    </section>
-
-    <section class="card warning">
-      🚨 No screenshot = No verification = No invite.
-    </section>
-
-    <h2 class="section-title">Loyalty Clubs</h2>
-
-    <section class="card tier">
-      <div class="tier-head">
-        <div class="tier-name">✈️ VIP Flight Club</div>
-        <div class="points">1,000+ pts</div>
-      </div>
-      <div class="perk-list">
-        <div class="perk">Early access</div>
-        <div class="perk">VIP giveaways</div>
-        <div class="perk">Automatic rewards tracking</div>
-        <div class="perk">Exclusive announcements</div>
-      </div>
-    </section>
-
-    <section class="card tier">
-      <div class="tier-head">
-        <div class="tier-name">🥂 First Class Circle</div>
-        <div class="points">2,500+ pts</div>
-      </div>
-      <div class="perk-list">
-        <div class="perk">Everything in VIP</div>
-        <div class="perk">Priority restocks</div>
-        <div class="perk">Bigger giveaways</div>
-        <div class="perk">Private drops</div>
-        <div class="perk">Surprise member perks</div>
-      </div>
-    </section>
-
-    <section class="card tier">
-      <div class="tier-head">
-        <div class="tier-name">👑 Private Jet Society</div>
-        <div class="points">4,000+ pts</div>
-      </div>
-      <div class="perk-list">
-        <div class="perk">Highest loyalty tier</div>
-        <div class="perk">First access to premium drops</div>
-        <div class="perk">Exclusive offers</div>
-        <div class="perk">Special gifts</div>
-        <div class="perk">Secret perks revealed only after joining</div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section class="card mystery">
-      <h2>🔒 Not Every Benefit Is Listed Here.</h2>
-      <p>Some perks stay exclusive until you’re inside.</p>
-      <p>The higher your loyalty, the better your experience.</p>
-    </section>
-
-    <section class="card">
-      <p class="fomo">Not in VIP yet?</p>
-      <p class="small">
-        Every purchase moves you closer. Hundreds of members shop with us, but only our top supporters earn a seat on these flights.
-      </p>
-      <p class="small"><strong>Your next order could unlock your invitation.</strong></p>
-    </section>
-
-    <div class="bottom-spacer"></div>
-  </main>
-
-  <div class="sticky">
-    <div class="sticky-inner">
-      <a class="btn" href="https://rb.gy/rszmtd" target="_blank" rel="noopener">🚀 Verify My Account</a>
-      <a class="btn secondary" href="#top">Review VIP Rules</a>
+    <div class="brand">
+      <h1>Snack Pack Flightz</h1>
+      <p>PAYMENT TERMINAL</p>
     </div>
-  </div>
+
+    <a class="pay square"
+       href="https://square.link/u/LJ2wy4qv"
+       target="_blank"
+       rel="noopener">
+      <span class="arrow">→</span>
+      <span class="preferred">Preferred</span>
+      <strong>Pay With Square</strong>
+    </a>
+
+    <a class="pay stripe"
+       href="https://buy.stripe.com/bJe7sK88EbN22yh10O4gg0o"
+       target="_blank"
+       rel="noopener">
+      <span class="arrow">→</span>
+      <strong>Other Payment Options</strong>
+
+      <div class="methods">
+        <span class="pill">Klarna</span>
+        <span class="pill">Afterpay</span>
+        <span class="pill">Link Pay</span>
+        <span class="pill">Zip Pay</span>
+      </div>
+    </a>
+
+    <div class="footer">
+      YOUR NEW LOCAL DISPENSARY. FIRE YOUR OLD PLUG.
+    </div>
+  </main>
 </body>
 </html>
